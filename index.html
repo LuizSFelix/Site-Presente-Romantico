@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nossa História ❤️</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(-45deg, #FFB6C1, #FF69B4, #FFB6C1, #FF1493);
+  background-size: 400% 400%;
+  animation: gradientShift 8s ease infinite;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  color: white;
+  position: relative;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.card {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 40px;
+  border-radius: 25px;
+  width: 90%;
+  max-width: 550px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  animation: slideIn 0.8s ease-out;
+  z-index: 10;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  letter-spacing: 1px;
+}
+
+#text {
+  font-size: 16px;
+  line-height: 1.8;
+  margin: 25px 0;
+  min-height: 100px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  letter-spacing: 0.5px;
+}
+
+img {
+  width: 100%;
+  border-radius: 20px;
+  margin: 20px 0;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  object-fit: cover;
+  height: 300px;
+}
+
+img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+button {
+  background: #ff4d6d;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 30px;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 10px 5px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+}
+
+button:hover {
+  background: #ff2e55;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 46, 85, 0.5);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+.heart {
+  position: fixed;
+  color: white;
+  font-size: 24px;
+  animation: subir 4s linear forwards;
+  pointer-events: none;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes subir {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-600px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+  margin: 20px 0;
+  border-radius: 20px;
+  overflow: visible;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.carousel-slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  border-radius: 20px;
+}
+
+.carousel-slide.active {
+  opacity: 1;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  margin: 0;
+  border-radius: 20px;
+  border: none;
+}
+
+.profile-photos {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  pointer-events: auto;
+  z-index: 1;
+}
+
+.profile-photo {
+  width: 180px;
+  height: 180px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.profile-photo:first-child {
+  left: 10px;
+}
+
+.profile-photo:last-child {
+  right: 10px;
+}
+
+.profile-photo img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 4px solid rgba(255, 255, 255, 0.5);
+  object-fit: cover;
+  margin: 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.profile-photo img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.profile-label {
+  font-size: 14px;
+  margin-top: 8px;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  text-align: center;
+}
+
+.carousel-controls {
+  display: none;
+}
+
+.carousel-btn {
+  display: none;
+}
+
+.carousel-counter {
+  display: none;
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 0;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background: white;
+  width: 30px;
+  border-radius: 5px;
+}
+
+.dot:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.spotify-container {
+  margin: 20px 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.counters {
+  display: flex;
+  justify-content: space-around;
+  gap: 15px;
+  margin: 25px 0;
+}
+
+.counter-box {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 15px;
+  border-radius: 15px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  flex: 1;
+  text-align: center;
+  backdrop-filter: blur(5px);
+}
+
+.counter-number {
+  font-size: 28px;
+  font-weight: bold;
+  color: #ffeb3b;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin: 5px 0;
+}
+
+.counter-label {
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  line-height: 1.4;
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 25px;
+    width: 95%;
+  }
+
+  h2 {
+    font-size: 22px;
+  }
+
+  #text {
+    font-size: 14px;
+  }
+
+  img {
+    height: 250px;
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 12px;
+  }
+}
+
+/* CSS da Timeline */
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 20px 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(to bottom, #8B0000, #DC143C);
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 50px;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.timeline-item:nth-child(odd) {
+  left: 0;
+  width: 48%;
+  text-align: center;
+  padding-right: 20px;
+}
+
+.timeline-item:nth-child(even) {
+  left: 52%;
+  width: 48%;
+  text-align: center;
+  padding-left: 20px;
+}
+
+.timeline-item .content {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 182, 193, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.timeline-item .content:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+}
+
+.timeline-item .date {
+  font-size: 14px;
+  color: #8B0000;
+  font-weight: bold;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.timeline-item .title {
+  font-size: 18px;
+  color: #DC143C;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-item .description {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #555;
+}
+
+.timeline-item .timeline-image {
+  width: 100%;
+  max-width: 400px;
+  height: 300px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  object-fit: contain;
+  object-position: center;
+  border: 3px solid rgba(255, 105, 180, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-item .timeline-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.timeline-item .dot {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(45deg, #FF69B4, #DC143C);
+  border: 4px solid #FFF;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsividade da Timeline */
+@media (max-width: 768px) {
+  .timeline {
+    max-width: 100%;
+    padding: 20px 10px;
+  }
+
+  .timeline::before {
+    left: 30px;
+  }
+
+  .timeline-item {
+    left: 80px !important;
+    width: calc(100% - 120px) !important;
+    text-align: left !important;
+    padding-left: 30px !important;
+    padding-right: 0 !important;
+  }
+
+  .timeline-item .dot {
+    left: 30px;
+  }
+
+  .timeline-item .timeline-image {
+    max-width: 280px;
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline::before {
+    left: 20px;
+    width: 3px;
+  }
+
+  .timeline-item {
+    left: 60px !important;
+    width: calc(100% - 80px) !important;
+    margin-bottom: 30px;
+    padding-left: 20px !important;
+  }
+
+  .timeline-item .content {
+    padding: 15px;
+  }
+
+  .timeline-item .dot {
+    left: 20px;
+    width: 16px;
+    height: 16px;
+    border-width: 3px;
+  }
+
+  .timeline-item .title {
+    font-size: 16px;
+  }
+
+  .timeline-item .description {
+    font-size: 13px;
+  }
+
+  .timeline-item .timeline-image {
+    max-width: 300px;
+    height: 200px;
+  }
+}
+
+/* Animação sequencial da Timeline */
+.timeline-item:nth-child(1) { animation-delay: 0.2s; }
+.timeline-item:nth-child(2) { animation-delay: 0.4s; }
+.timeline-item:nth-child(3) { animation-delay: 0.6s; }
+.timeline-item:nth-child(4) { animation-delay: 0.8s; }
+.timeline-item:nth-child(5) { animation-delay: 1.0s; }
+.timeline-item:nth-child(6) { animation-delay: 1.2s; }
+
+/* CSS dos Vales */
+.vales-section {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.vales-title {
+  font-size: 24px;
+  color: #DC143C;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  font-weight: bold;
+}
+
+.vales-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.vale-card {
+  background: rgba(255, 255, 255, 0.95);
+  border: 3px dashed #FF69B4;
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+}
+
+.vale-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  border-color: #DC143C;
+}
+
+.vale-card.resgatado {
+  background: linear-gradient(135deg, #8B0000, #DC143C);
+  color: white;
+  border: 3px solid #8B0000;
+  transform: scale(0.95);
+}
+
+.vale-card.resgatado::after {
+  content: "✅ RESGATADO!";
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: #FF69B4;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.vale-text {
+  font-size: 16px;
+  font-weight: bold;
+  color: #DC143C;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.vale-card.resgatado .vale-text {
+  color: white;
+}
+
+.vale-icon {
+  font-size: 30px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .vales-container {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .vale-card {
+    padding: 15px;
+  }
+
+  .vale-text {
+    font-size: 14px;
+  }
+}
+
+/* CSS dos Motivos */
+.motivos-section {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.motivos-button {
+  background: linear-gradient(135deg, #FF69B4, #DC143C);
+  border: none;
+  padding: 15px 30px;
+  border-radius: 25px;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.motivos-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255, 105, 180, 0.6);
+  background: linear-gradient(135deg, #FF1493, #B22222);
+}
+
+.motivos-text {
+  font-size: 18px;
+  color: #DC143C;
+  font-weight: bold;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.4;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  padding: 0 20px;
+}
+
+.motivos-text.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 480px) {
+  .motivos-button {
+    padding: 12px 25px;
+    font-size: 14px;
+  }
+
+  .motivos-text {
+    font-size: 16px;
+    min-height: 50px;
+  }
+}
+
+/* CSS para a chuva de corações do Easter Egg */
+.heart-rain {
+  position: fixed;
+  top: -50px;
+  font-size: 30px;
+  animation: fall 3s linear forwards;
+  pointer-events: none;
+  z-index: 1000;
+  user-select: none;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-50px) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ========== SEÇÃO: FOTOS DE PERFIL DOS CASAL ========== 
+     Exibe as fotos circulares de perfil de ambos os lados da tela.
+     Ao clicar nas fotos, dispara uma animação de corações caindo.
+     ===================================================== -->
+<div class="profile-photos">
+  <div class="profile-photo" onclick="createMultipleHearts()">
+    <img id="photo-left" src="eu.jpg" alt="Luiz">
+    <div class="profile-label">👨 Luiz</div>
+  </div>
+  <div class="profile-photo" onclick="createMultipleHearts()">
+    <img id="photo-right" src="ela.jpg" alt="Maria">
+    <div class="profile-label">👩 Maria</div>
+  </div>
+</div>
+
+<!-- ========== SEÇÃO PRINCIPAL: CARTÃO COM TODA A HISTÓRIA ========== -->
+<div class="card">
+  <h2>💕 Luiz & Maria 💕</h2>
+
+  <!-- ========== SEÇÃO: MÚSICA DO SPOTIFY ========== 
+       Player da música com embed do Spotify.
+       Pode ser clicado para tocar a música enquanto lê.
+       ============================================== -->
+  <div class="spotify-container">
+    <div style="text-align: center; margin-bottom: 20px;">
+      <p style="font-size: 14px; margin-bottom: 10px; color: #FFB6C1;">🎵 Escute enquanto lê 🎵</p>
+      <iframe style="border-radius:12px"
+      src="https://open.spotify.com/embed/track/6fcZ4LOluSt1237wQCn6np?utm_source=generator"
+      width="100%" height="152"
+      frameBorder="0"
+      allow="autoplay; clipboard-write; encrypted-media;">
+      </iframe>
+    </div>
+  </div>
+
+  <!-- ========== SEÇÃO: MENSAGEM PRINCIPAL (TYPEWRITER) ========== 
+       Texto que aparece com efeito de máquina de escrever.
+       Mensagem personalizada que anima ao carregar a página.
+       =========================================================== -->
+  <p id="text"></p>
+
+  <!-- ========== SEÇÃO: CARROSSEL DE FOTOS ========== 
+       Exibe 3 fotos em sequência com navegação por pontos.
+       Usa autoplay para trocar de foto automaticamente.
+       ================================================== -->
+  <div class="carousel-container">
+    <div class="carousel">
+      <div class="carousel-slide active">
+        <img src="foto1.jpg" alt="Foto 1">
+      </div>
+      <div class="carousel-slide">
+        <img src="foto2.jpg" alt="Foto 2">
+      </div>
+      <div class="carousel-slide">
+        <img src="foto3.jpg" alt="Foto 3">
+      </div>
+    </div>
+    <div class="carousel-dots">
+      <span class="dot active" onclick="currentSlide(0)"></span>
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+    </div>
+  </div>
+
+  <!-- ========== SEÇÃO: CONTADORES DE DIAS ========== 
+       Mostra o tempo desde marcos importantes do relacionamento.
+       Atualiza automaticamente os dias passados.
+       ================================================ -->
+  <div class="counters">
+    <div class="counter-box">
+      <div class="counter-label">Dias desde o<br>Primeiro Beijo</div>
+      <div class="counter-number" id="kiss-days">--</div>
+      <div class="counter-label">06/09/2024</div>
+    </div>
+    <div class="counter-box">
+      <div class="counter-label">Dias que<br>Namoramos</div>
+      <div class="counter-number" id="dating-days">--</div>
+      <div class="counter-label">17/11/2024</div>
+    </div>
+  </div>
+
+  <!-- ========== SEÇÃO: LINHA DO TEMPO ========== 
+       Exibe os marcos importantes da história do casal.
+       Cada item mostra uma foto, data, título e descrição do momento.
+       Alterna entre esquerda e direita com animações.
+       =========================================== -->
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="dot"></div>
+      <div class="content">
+        <img src="timeline1.jpg" alt="Primeiro Beijo" class="timeline-image">
+        <div class="date">06/09/2024</div>
+        <div class="title">Primeiro Beijo</div>
+        <div class="description">Nosso primeiro beijo foi mágico, sob as estrelas. Foi o momento que mudou tudo e começou nossa história de amor.<br><span style="font-size: 12px; color: #999; margin-top: 8px; display: block;">✨ Encenação criada com IA (Gemini) ✨</span></div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="dot"></div>
+      <div class="content">
+        <img src="timeline2.jpeg" alt="Começamos a Namorar" class="timeline-image">
+        <div class="date">17/11/2024</div>
+        <div class="title">Começamos a Namorar</div>
+        <div class="description">Oficializamos nosso namoro neste dia especial. Prometemos cuidar um do outro e construir uma história linda juntos.</div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="dot"></div>
+      <div class="content">
+        <img src="timeline3.jpeg" alt="Primeiro Natal Juntos" class="timeline-image">
+        <div class="date">25/12/2024</div>
+        <div class="title">Primeiro Natal Juntos</div>
+        <div class="description">Celebramos nosso primeiro Natal como casal. Foi mágico e maravilhoso passar ao lado de quem eu amo!💕</div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="dot"></div>
+      <div class="content">
+        <img src="timeline4.jpg" alt="Dia dos Namorados" class="timeline-image">
+        <div class="date">14/02/2025</div>
+        <div class="title">Dia dos Namorados</div>
+        <div class="description">Uma data especial que celebramos com muito amor e um treino bem fofinho.</div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="dot"></div>
+      <div class="content">
+        <img src="timeline5.JPG" alt="Primeira Viagem Juntos" class="timeline-image">
+        <div class="date">17/04/2025</div>
+        <div class="title">Primeira Viagem Juntos</div>
+        <div class="description">Nossa primeira viagem como casal foi incrível! Exploramos novos lugares e criamos memórias que guardaremos para sempre.</div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="dot"></div>
+      <div class="content">
+        <img src="timeline6.jpg" alt="Hoje" class="timeline-image">
+        <div class="date">22/04/2026</div>
+        <div class="title">Hoje</div>
+        <div class="description">Cada dia ao seu lado é uma bênção. Nosso amor cresce a cada momento e mal posso esperar pelo que o futuro nos reserva juntos.</div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <button onclick="resetAnimation()">🔄 Recomeçar</button>
+  </div>
+
+  <!-- ========== SEÇÃO: VALES ESPECIAIS ========== 
+       Cartões com promessas/vales que podem ser "resgatados".
+       Ao clicar, o vale fica marcado como resgatado com animação.
+       ============================================ -->
+  <div class="vales-section">
+    <h3 class="vales-title">🎁 Vales Especiais 🎁</h3>
+    <div class="vales-container">
+      <div class="vale-card" onclick="resgatarVale(this)">
+        <span class="vale-icon">🍝</span>
+        <div class="vale-text">Vale um macarrão de panela de pressão</div>
+      </div>
+      <div class="vale-card" onclick="resgatarVale(this)">
+        <span class="vale-icon">🍗</span>
+        <div class="vale-text">Vale uma parmegiana</div>
+      </div>
+      <div class="vale-card" onclick="resgatarVale(this)">
+        <span class="vale-icon">🎮</span>
+        <div class="vale-text">Vale eu ficar sem jogar Valorant hoje</div>
+      </div>
+      <div class="vale-card" onclick="resgatarVale(this)">
+        <span class="vale-icon">💆‍♀️</span>
+        <div class="vale-text">Vale massagem pós-vôlei</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SEÇÃO: MOTIVOS PARA AMAR ========== 
+       Botão que ao clicar exibe motivos aleatórios para amar a pessoa.
+       Cada clique mostra um motivo diferente com animação suave.
+       ============================================ -->
+  <div class="motivos-section">
+    <button class="motivos-button" onclick="mostrarMotivo()">💕 Motivos para eu te amar 💕</button>
+    <p id="motivo-text" class="motivos-text"></p>
+  </div>
+</div>
+
+<!-- ========== SEÇÃO: JAVASCRIPT - FUNCIONALIDADES ========== 
+     Contém todas as funções que fazem o site interativo:
+     - Efeito typewriter para a mensagem
+     - Carrossel automático de fotos
+     - Contadores de dias
+     - Vales que podem ser resgatados
+     - Motivos aleatórios para amar
+     - Easter egg (digitar "te amo")
+     - Animação de corações caindo
+     ========================================================= -->
+<script>
+// Mensagem romantic com personalizações
+const message = "Você é a pessoa mais especial do meu mundo. Cada momento com você é perfeito e inesquecível. Te amo muito! 💕";
+
+let i = 0;
+
+function typeWriter() {
+  const textElement = document.getElementById("text");
+  
+  if (i < message.length) {
+    textElement.innerHTML += message.charAt(i);
+    i++;
+    setTimeout(typeWriter, 50);
+  }
+}
+
+// Função para resetar a animação do texto
+function resetAnimation() {
+  i = 0;
+  document.getElementById("text").innerHTML = "";
+  typeWriter();
+}
+
+// Inicia o efeito typewriter ao carregar a página
+window.addEventListener('load', typeWriter);
+
+// Array com fotos (adicione seus arquivos de foto)
+const photos = [
+  "foto1.jpg",
+  "foto2.jpg",
+  "foto3.jpg"
+];
+
+let currentPhotoIndex = 0;
+let autoplayInterval;
+
+// Função para mostrar slide específico
+function showSlide(index) {
+  const slides = document.querySelectorAll(".carousel-slide");
+  const dots = document.querySelectorAll(".dot");
+  
+  // Garantir que o índice está dentro do range
+  if (index >= slides.length) {
+    currentPhotoIndex = 0;
+  } else if (index < 0) {
+    currentPhotoIndex = slides.length - 1;
+  } else {
+    currentPhotoIndex = index;
+  }
+  
+  // Remover classe active de todos
+  slides.forEach(slide => slide.classList.remove("active"));
+  dots.forEach(dot => dot.classList.remove("active"));
+  
+  // Adicionar classe active ao slide e dot atual
+  slides[currentPhotoIndex].classList.add("active");
+  dots[currentPhotoIndex].classList.add("active");
+  
+  // Atualizar contador
+  const currentSlideEl = document.getElementById("current-slide");
+  if (currentSlideEl) {
+    currentSlideEl.textContent = currentPhotoIndex + 1;
+  }
+}
+
+// Próximo slide
+function nextSlide() {
+  showSlide(currentPhotoIndex + 1);
+  resetAutoplay();
+}
+
+// Slide anterior
+function prevSlide() {
+  showSlide(currentPhotoIndex - 1);
+  resetAutoplay();
+}
+
+// Ir para slide específico
+function currentSlide(index) {
+  showSlide(index);
+  resetAutoplay();
+}
+
+// Autoplay - trocar fotos a cada 5 segundos
+function startAutoplay() {
+  autoplayInterval = setInterval(() => {
+    showSlide(currentPhotoIndex + 1);
+  }, 5000);
+}
+
+// Resetar autoplay quando usuário interage
+function resetAutoplay() {
+  clearInterval(autoplayInterval);
+  startAutoplay();
+}
+
+// Iniciar autoplay ao carregar
+window.addEventListener('load', () => {
+  const totalSlidesEl = document.getElementById("total-slides");
+  if (totalSlidesEl) {
+    totalSlidesEl.textContent = photos.length;
+  }
+  startAutoplay();
+});
+
+// Função para criar corações flutuantes
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.top = "100vh";
+  document.body.appendChild(heart);
+
+  // Remove o coração após a animação terminar
+  setTimeout(() => {
+    heart.remove();
+  }, 4000);
+}
+
+// Função para criar múltiplos corações ao clicar
+function createMultipleHearts() {
+  for (let i = 0; i < 8; i++) {
+    setTimeout(() => {
+      createHeart();
+    }, i * 100);
+  }
+}
+
+// Cria corações flutuantes continuamente
+setInterval(createHeart, 500);
+
+// Função para resgatar vales
+function resgatarVale(element) {
+  if (!element.classList.contains('resgatado')) {
+    element.classList.add('resgatado');
+    // Criar efeito de confetes ou corações extras
+    for (let i = 0; i < 5; i++) {
+      setTimeout(() => {
+        createHeart();
+      }, i * 200);
+    }
+  }
+}
+
+// Array com motivos românticos
+const motivosRomanticos = [
+  "Seu sorriso ilumina meu dia como o sol ilumina o mundo 🌞",
+  "Cada momento ao seu lado é um tesouro que guardo no coração 💎",
+  "Você me faz acreditar que o amor verdadeiro existe ✨",
+  "Seu abraço é meu lugar favorito no mundo inteiro 🤗",
+  "Com você, até os dias comuns se tornam especiais 🌟",
+  "Seu amor me faz querer ser uma pessoa melhor todos os dias 💪❤️",
+  "Você é a razão do meu sorriso matinal ☀️😊",
+  "Juntos, criamos memórias que durarão para sempre 📸💕",
+  "Seu amor é a melodia que toca no meu coração 🎵",
+  "Você é meu sonho tornado realidade 🌙✨",
+  "Cada batida do meu coração é por você 💓",
+  "Seu amor me dá forças para enfrentar qualquer desafio 🛡️❤️",
+  "Com você, o futuro parece ainda mais brilhante ❤️",
+  "Você é a peça que faltava no meu quebra-cabeça 🧩💖",
+  "Seu amor é o combustível que me move todos os dias ⛽❤️"
+];
+
+// Função para mostrar motivo aleatório
+function mostrarMotivo() {
+  const motivoText = document.getElementById('motivo-text');
+  const randomIndex = Math.floor(Math.random() * motivosRomanticos.length);
+  const motivo = motivosRomanticos[randomIndex];
+
+  // Remover classe show para reiniciar animação
+  motivoText.classList.remove('show');
+
+  // Pequeno delay para reiniciar a transição
+  setTimeout(() => {
+    motivoText.textContent = motivo;
+    motivoText.classList.add('show');
+  }, 50);
+
+  // Criar alguns corações extras para celebrar
+  for (let i = 0; i < 3; i++) {
+    setTimeout(() => {
+      createHeart();
+    }, i * 300);
+  }
+}
+
+// Função para atualizar automaticamente os contadores de dias
+function updateCounters() {
+  const kissDate = new Date(2024, 8, 6); // 06/09/2024 (mês zero-indexado)
+  const datingDate = new Date(2024, 10, 17); // 17/11/2024
+  const today = new Date();
+
+  const diffDays = (fromDate, toDate) => {
+    const diff = toDate - fromDate;
+    return Math.floor(diff / (1000 * 60 * 60 * 24));
+  };
+
+  document.getElementById('kiss-days').textContent = diffDays(kissDate, today);
+  document.getElementById('dating-days').textContent = diffDays(datingDate, today);
+}
+
+// Iniciar autoplay e contadores ao carregar
+window.addEventListener('load', () => {
+  const totalSlidesEl = document.getElementById("total-slides");
+  if (totalSlidesEl) {
+    totalSlidesEl.textContent = photos.length;
+  }
+  startAutoplay();
+
+  // Delay maior para garantir que tudo está carregado
+  setTimeout(() => {
+    updateCounters();
+  }, 500);
+});
+
+// Easter Egg - Keylogger para "te amo"
+let keySequence = [];
+const targetSequence = ['t', 'e', ' ', 'a', 'm', 'o'];
+
+document.addEventListener('keydown', (event) => {
+  const key = event.key.toLowerCase();
+
+  // Adicionar tecla à sequência
+  keySequence.push(key);
+
+  // Manter apenas as últimas teclas da sequência alvo
+  if (keySequence.length > targetSequence.length) {
+    keySequence.shift();
+  }
+
+  // Verificar se a sequência está correta
+  if (keySequence.length === targetSequence.length &&
+      keySequence.every((k, i) => k === targetSequence[i])) {
+
+    // Easter Egg ativado! Chuva de corações
+    triggerHeartRain();
+
+    // Resetar sequência para permitir múltiplas ativações
+    keySequence = [];
+  }
+});
+
+// Função para criar chuva de corações
+function triggerHeartRain() {
+  const numberOfHearts = 50; // Quantidade de corações
+
+  for (let i = 0; i < numberOfHearts; i++) {
+    setTimeout(() => {
+      createFallingHeart();
+    }, i * 100); // Delay entre cada coração
+  }
+
+  // Efeito extra: piscar o fundo rapidamente
+  document.body.style.animationDuration = '0.5s';
+  setTimeout(() => {
+    document.body.style.animationDuration = '8s';
+  }, 2000);
+}
+
+// Função para criar um coração caindo
+function createFallingHeart() {
+  const heart = document.createElement('div');
+  heart.className = 'heart-rain';
+  heart.textContent = '❤️';
+
+  // Posição horizontal aleatória
+  heart.style.left = Math.random() * 100 + 'vw';
+
+  // Tamanho aleatório
+  const size = Math.random() * 20 + 20; // Entre 20px e 40px
+  heart.style.fontSize = size + 'px';
+
+  // Velocidade aleatória (duração da animação)
+  const duration = Math.random() * 2 + 2; // Entre 2s e 4s
+  heart.style.animationDuration = duration + 's';
+
+  // Adicionar ao body
+  document.body.appendChild(heart);
+
+  // Remover após a animação
+  setTimeout(() => {
+    if (heart.parentNode) {
+      heart.parentNode.removeChild(heart);
+    }
+  }, duration * 1000);
+}
+</script>
+
+</body>
+</html>
